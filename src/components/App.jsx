@@ -21,6 +21,18 @@ export class App extends Component {
     number: '',
   };
 
+
+  onChange =e=>{
+  this.setState({[e.target.name]: e.target.value})
+  }
+
+  onFilter =()=>{
+    return this.state.contacts.filter(contact=> contact.name.toLowerCase().match(this.state.filter.toLowerCase())
+    )
+
+  }
+
+
   render() {
     return (
   <div>
@@ -28,8 +40,8 @@ export class App extends Component {
   <ContactForm  />
 
   <Contacts title= "Contacts">
-  <Filter  />
-  <ContactList contacts={this.state.contacts} key={this.state.contacts.id} name={this.state.contacts.name}/>
+  <Filter  filter = {this.state.filter} onChange = {this.onChange} />
+  <ContactList contacts={this.onFilter()}  key={this.state.contacts.id} name={this.state.contacts.name} number={this.state.contacts.number}/>
   </Contacts>
 </div>
     );
