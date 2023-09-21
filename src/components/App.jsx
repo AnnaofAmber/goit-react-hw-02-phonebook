@@ -17,9 +17,15 @@ export class App extends Component {
       { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
+
+  onSubmit = data =>{
+    this.setState(prevState => {
+      data.id = nanoid();
+      return { contacts: [...prevState.contacts, data] };
+    })
+  }
+
 
 
   onChange =e=>{
@@ -32,12 +38,11 @@ export class App extends Component {
 
   }
 
-
   render() {
     return (
   <div>
   <h1>Phonebook</h1>
-  <ContactForm  />
+  <ContactForm  submit={this.onSubmit}/>
 
   <Contacts title= "Contacts">
   <Filter  filter = {this.state.filter} onChange = {this.onChange} />
