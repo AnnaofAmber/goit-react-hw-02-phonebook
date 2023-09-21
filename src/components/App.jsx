@@ -26,14 +26,21 @@ export class App extends Component {
     })
   }
 
+  nameAlreadyExists =contact=>{
+  return this.state.contacts.some(({name})=>name===contact)
+  }
+  numberAlreadyExists = contact =>{
+return this.state.contacts.some(({number})=>number===contact)
 
+  }
+ 
 
   onChange =e=>{
   this.setState({[e.target.name]: e.target.value})
   }
 
   onFilter =()=>{
-    return this.state.contacts.filter(contact=> contact.name.toLowerCase().match(this.state.filter.toLowerCase())
+    return this.state.contacts.filter(contact=> contact.name.toLowerCase().match(this.state.filter.toLowerCase()) || contact.number.match(this.state.filter)
     )
 
   }
@@ -42,7 +49,7 @@ export class App extends Component {
     return (
   <div>
   <h1>Phonebook</h1>
-  <ContactForm  submit={this.onSubmit}/>
+  <ContactForm  onSubmit={this.onSubmit} nameAlreadyExists={this.nameAlreadyExists} numberAlreadyExists={this.numberAlreadyExists}/>
 
   <Contacts title= "Contacts">
   <Filter  filter = {this.state.filter} onChange = {this.onChange} />
