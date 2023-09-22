@@ -4,7 +4,7 @@ export const Filter = ({ filter, onChange }) => {
   return (
     <div className={css.filter}>
       <label className={css.label} htmlFor="search">
-        Find contacts by name
+        Find contacts by name:
       </label>
       <input
         className={css.input}
@@ -15,5 +15,6 @@ export const Filter = ({ filter, onChange }) => {
         onChange={onChange}
       />
     </div>
+
   );
 };
