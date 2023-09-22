@@ -46,7 +46,7 @@ return this.state.contacts.some(({number})=>number===contact)
   }
 
   onDelete = (contactId)=>{
-   return this.setState(prevState=>{
+    this.setState(prevState=>{
     return { contacts: prevState.contacts.filter((contact)=>contact.id !== contactId)}
     })
 

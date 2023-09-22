@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import css from './ContactFrom.module.css'
+
 export class ContactForm extends Component{ 
 
   state = {
@@ -31,15 +33,12 @@ export class ContactForm extends Component{
   };
 
 onSubmit(data);
-console.log('sdda');
-
  }
-
 
 
   render(){
   return (
-    <form onSubmit={this.handleSubmit}>
+    <form className={css.contactForm} onSubmit={this.handleSubmit}>
       <label htmlFor="name">Name</label>
       <input
         id="name"
