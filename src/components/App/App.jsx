@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import css from "./App.module.css"
+import css from './App.module.css';
 
 import { ContactForm } from '../ContactForm/ContactForm';
 import { Contacts } from '../Contacts/Contacts';
 import { Filter } from '../Filter/Filter';
 import { ContactList } from '../ContactList/ContactList';
-
 
 export class App extends Component {
   state = {
@@ -19,50 +18,63 @@ export class App extends Component {
     filter: '',
   };
 
-  onSubmit = data =>{
+  onSubmit = data => {
     this.setState(prevState => {
       data.id = nanoid();
       return { contacts: [...prevState.contacts, data] };
-    })
-  }
+    });
+  };
 
-  nameAlreadyExists =contact=>{
-  return this.state.contacts.some(({name})=>name===contact)
-  }
-  numberAlreadyExists = contact =>{
-return this.state.contacts.some(({number})=>number===contact)
+  nameAlreadyExists = contact => {
+    return this.state.contacts.some(({ name }) => name === contact);
+  };
+  numberAlreadyExists = contact => {
+    return this.state.contacts.some(({ number }) => number === contact);
+  };
 
-  }
- 
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-  onChange =e=>{
-  this.setState({[e.target.name]: e.target.value})
-  }
+  onFilter = () => {
+    return this.state.contacts.filter(
+      contact =>
+        contact.name.toLowerCase().match(this.state.filter.toLowerCase()) ||
+        contact.number.match(this.state.filter)
+    );
+  };
 
-  onFilter =()=>{
-    return this.state.contacts.filter(contact=> contact.name.toLowerCase().match(this.state.filter.toLowerCase()) || contact.number.match(this.state.filter)
-    )
-
-  }
-
-  onDelete = (contactId)=>{
-    this.setState(prevState=>{
-    return { contacts: prevState.contacts.filter((contact)=>contact.id !== contactId)}
-    })
-
-  }
+  onDelete = contactId => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== contactId
+        ),
+      };
+    });
+  };
 
   render() {
     return (
-  <div className={css.main}>
-  <h1 className={css.title}>Phonebook</h1>
-  <ContactForm  onSubmit={this.onSubmit} nameAlreadyExists={this.nameAlreadyExists} numberAlreadyExists={this.numberAlreadyExists}/>
+      <div className={css.main}>
+        <h1 className={css.title}>Phonebook</h1>
+        <ContactForm
+          onSubmit={this.onSubmit}
+          nameAlreadyExists={this.nameAlreadyExists}
+          numberAlreadyExists={this.numberAlreadyExists}
+        />
 
-  <Contacts title= "Contacts">
-  <Filter  filter = {this.state.filter} onChange = {this.onChange} />
-  <ContactList contacts={this.onFilter()}  key={this.state.contacts.id} name={this.state.contacts.name} number={this.state.contacts.number} onDelete={this.onDelete}/>
-  </Contacts>
-</div>
+        <Contacts title="Contacts">
+          <Filter filter={this.state.filter} onChange={this.onChange} />
+          <ContactList
+            contacts={this.onFilter()}
+            key={this.state.contacts.id}
+            name={this.state.contacts.name}
+            number={this.state.contacts.number}
+            onDelete={this.onDelete}
+          />
+        </Contacts>
+      </div>
     );
   }
 }
