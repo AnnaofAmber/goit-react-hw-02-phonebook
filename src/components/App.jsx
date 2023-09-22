@@ -51,7 +51,8 @@ export class App extends Component {
           contact => contact.id !== contactId
         ),
       };
-    });
+    })
+
   };
 
   render() {
