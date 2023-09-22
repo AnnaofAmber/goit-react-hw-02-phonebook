@@ -8,6 +8,7 @@
   font-weight: 700;
 }
 .input {
+    
   width: 236px;
   height: 18px;
   padding: 5px;
@@ -18,5 +19,5 @@
 }
 
 input:focus {
-  outline: 2px solid rgba(199, 85, 43, 0.607);
+  outline: 2px solid rgba(199, 85, 43, 0.594);
 }
