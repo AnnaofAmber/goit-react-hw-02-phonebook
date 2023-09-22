@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import css from "./App.module.css"
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { Contacts } from './Contacts/Contacts';
@@ -56,8 +57,8 @@ export class App extends Component {
 
   render() {
     return (
-      <div >
-        <h1 >Phonebook</h1>
+      <div className={css.main}>
+        <h1 className={css.title}>Phonebook</h1>
         <ContactForm
           onSubmit={this.onSubmit}
           nameAlreadyExists={this.nameAlreadyExists}
