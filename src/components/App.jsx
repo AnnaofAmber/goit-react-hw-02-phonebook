@@ -45,6 +45,13 @@ return this.state.contacts.some(({number})=>number===contact)
 
   }
 
+  onDelete = (contactId)=>{
+   return this.setState(prevState=>{
+    return { contacts: prevState.contacts.filter((contact)=>contact.id !== contactId)}
+    })
+
+  }
+
   render() {
     return (
   <div>
@@ -53,7 +60,7 @@ return this.state.contacts.some(({number})=>number===contact)
 
   <Contacts title= "Contacts">
   <Filter  filter = {this.state.filter} onChange = {this.onChange} />
-  <ContactList contacts={this.onFilter()}  key={this.state.contacts.id} name={this.state.contacts.name} number={this.state.contacts.number}/>
+  <ContactList contacts={this.onFilter()}  key={this.state.contacts.id} name={this.state.contacts.name} number={this.state.contacts.number} onDelete={this.onDelete}/>
   </Contacts>
 </div>
     );
