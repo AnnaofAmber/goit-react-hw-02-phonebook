@@ -1,7 +1,9 @@
+import css from "./Contacts.module.css"
+
 export const Contacts = ({title, children})=>{
     return (
-        <section>
-            <h2>{title}</h2>
+        <section className={css.section}>
+            <h2 className={css.title}>{title}</h2>
             {children}
         </section>
     )
