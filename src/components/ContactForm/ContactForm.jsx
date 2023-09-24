@@ -14,23 +14,18 @@ export class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { onSubmit, nameAlreadyExists, numberAlreadyExists } = this.props;
-    const { name, number } = e.target.elements;
 
-    if (nameAlreadyExists(name.value)) {
-      alert(`${name.value} already exists!`);
+    if (nameAlreadyExists(this.state.name)) {
+      alert(`${this.state.name} already exists!`);
       return;
     }
-    if (numberAlreadyExists(number.value)) {
-      alert(`${number.value} already exists in Your Contact list`);
+    if (numberAlreadyExists(this.state.number)) {
+      alert(`${this.state.number} already exists in Your Contact list`);
       return;
     }
 
-    const data = {
-      name: name.value,
-      number: number.value,
-    };
 
-    onSubmit(data);
+    onSubmit(this.state);
   };
 
   render() {
