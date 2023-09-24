@@ -7,6 +7,7 @@ import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 
+
 export class App extends Component {
   state = {
     contacts: [
@@ -69,9 +70,6 @@ export class App extends Component {
           <Filter filter={this.state.filter} onChange={this.onChange} />
           <ContactList
             contacts={this.onFilter()}
-            key={this.state.contacts.id}
-            name={this.state.contacts.name}
-            number={this.state.contacts.number}
             onDelete={this.onDelete}
           />
         </Contacts>
