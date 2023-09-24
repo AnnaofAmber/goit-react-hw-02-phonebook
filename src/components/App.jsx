@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
-import css from "./App.module.css"
+import css from './App.module.css';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { Contacts } from './Contacts/Contacts';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
-
 
 export class App extends Component {
   state = {
@@ -52,8 +51,7 @@ export class App extends Component {
           contact => contact.id !== contactId
         ),
       };
-    })
-
+    });
   };
 
   render() {
@@ -68,10 +66,7 @@ export class App extends Component {
 
         <Contacts title="Contacts">
           <Filter filter={this.state.filter} onChange={this.onChange} />
-          <ContactList
-            contacts={this.onFilter()}
-            onDelete={this.onDelete}
-          />
+          <ContactList contacts={this.onFilter()} onDelete={this.onDelete} />
         </Contacts>
       </div>
     );

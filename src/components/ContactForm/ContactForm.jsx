@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import css from "./ContactForm.module.css"
+import css from './ContactForm.module.css';
 export class ContactForm extends Component {
   state = {
     name: '',
@@ -23,7 +23,6 @@ export class ContactForm extends Component {
       alert(`${this.state.number} already exists in Your Contact list`);
       return;
     }
-
 
     onSubmit(this.state);
   };
@@ -66,4 +65,3 @@ export class ContactForm extends Component {
     );
   }
 }
-
