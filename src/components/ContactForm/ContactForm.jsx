@@ -7,6 +7,10 @@ export class ContactForm extends Component {
     number: '',
   };
 
+  reset = () => {
+    this.setState({ name: '', number: '' });
+  };
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -25,6 +29,7 @@ export class ContactForm extends Component {
     }
 
     onSubmit(this.state);
+    this.reset();
   };
 
   render() {
